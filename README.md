@@ -26,6 +26,7 @@ The schematic for the PLL block is as follows:
 
 The schematic for the Digital Phase Accumulator is as follows:
 
+![digital_phase_accumulator_schematic](https://user-images.githubusercontent.com/77510951/156223228-666911d7-1208-4cd7-b9a8-ef3ca4bc6214.png)
 
 ## Schematics
 
@@ -71,7 +72,7 @@ The schematic for the Programmable Frequency Divider is as follows:
 
 ![programmable_frequency_divider_schematic](https://user-images.githubusercontent.com/77510951/156221183-2b2fcc49-efcb-4b7c-b6a1-58e03ff0b544.png)
 
-The design was custom made by merging the logic for a _ _f/4_ _ divider and a _ _f/5_ _ divider with a 50% duty cycle. Relevant inputs were taken out with CPL.
+The design was custom made by merging the logic for a _f/4_ divider and a _f/5_ divider with a 50% duty cycle. Relevant inputs were taken out with CPL.
 
 ### Phase Detector & Charge Pump
 The schematic for the Phase Detector & Charge Pump block is as follows:
