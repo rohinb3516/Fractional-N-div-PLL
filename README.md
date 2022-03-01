@@ -27,7 +27,7 @@ The schematic for the PLL block is as follows:
 
 The schematic for the Digital Phase Accumulator is as follows:
 
-![digital_phase_accumulator_schematic](https://user-images.githubusercontent.com/77510951/156223228-666911d7-1208-4cd7-b9a8-ef3ca4bc6214.png | width=100)
+<p align="center"><img src="https://user-images.githubusercontent.com/77510951/156223228-666911d7-1208-4cd7-b9a8-ef3ca4bc6214.png" width="750" height="500"></p>
 
 The idea behind a Fractional divider based N-div M-bit Fractional Divider PLL is to divide the output of a VCO into fractional delays wrt. one cycle (i.e. 1/2<sup>M</sup>) and select the relevant parts to supply the output. A Delay Locked Loop (DLL) made by the cascading tunable delay elements and the phase frequency detector ensures that the delay caused by the cascade is exactly one cycle of the input. We can use a programmable divider controlled by an accumulator to help reach the DLL into a lock.
 
@@ -40,7 +40,8 @@ All the schematics made for this project are shown below. Circuit symbols were c
 ### NAND Gate
 The schematic for the NAND gate is as follows:
 
-![nand_gate_schematic](https://user-images.githubusercontent.com/77510951/156221129-4deed2bb-ee22-4f7f-ad6d-b10af3eeb772.png)
+<p align="center"><img src="https://user-images.githubusercontent.com/77510951/156221129-4deed2bb-ee22-4f7f-ad6d-b10af3eeb772.png" width="600" height="600"></p>
+
 
 ### D Flip-Flop
 The schematic for the D Flip-Flop is as follows:
@@ -63,7 +64,7 @@ This was used in realizing a 3-bit adder, with the same unit used in parallel 3 
 ### Multiplexer
 The schematic for the Multiplexer is as follows:
 
-![multiplexer_schematic_full_view_with_explanation](https://user-images.githubusercontent.com/77510951/156219991-80a7f945-bf8a-4da5-8881-a04be4991b0a.png)
+<p align="center">![multiplexer_schematic_full_view_with_explanation](https://user-images.githubusercontent.com/77510951/156219991-80a7f945-bf8a-4da5-8881-a04be4991b0a.png)</p>
 
 This was designed using CPL. Complementary bits were gated together to reduce design effort. Strong inverters were used at the output to increase input sensitivity.
 
