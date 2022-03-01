@@ -3,6 +3,7 @@ A submission for Cloud Based Analog IC Design Hackathon conducted by IIIT-H by R
 
 ## Table of Contents
   * [Abstract](#Abstract)
+  * [Tools Used](#Tools-Used)
   * [Explanation](#Explanation)
   * [Schematics](#Schematics)
   * [Simulation Results](#Simulation-Results)
@@ -12,7 +13,19 @@ A submission for Cloud Based Analog IC Design Hackathon conducted by IIIT-H by R
 
 ## Abstract
 
+## Tools Used
+ * Synopsys Custom Compiler: The Synopsys Custom Compiler™ design environment is a modern solution for full-custom analog, custom digital, and mixed-signal IC design. As the heart of the Synopsys Custom Design Platform, Custom Compiler provides design entry, simulation management and analysis, and custom layout editing features. This tool was used to design the circuit on a transistor level.
+ * Synopsys Primewave: PrimeWave™ Design Environment is a comprehensive and flexible environment for simulation setup and analysis of analog, RF, mixed-signal design, custom-digital and memory designs within the Synopsys Custom Design Platform. This tool helped in various types of simulations of the above designed circuit.
+ * Synopsys 28nm PDK: The Synopsys 28nm Process Design Kit (PDK) was used in creation and simulation of the above designed circuit.
+
 ## Explanation
+
+The schematic for the PLL block is as follows:
+
+![Fractional_div_PLL_schematic_with_explanation](https://user-images.githubusercontent.com/77510951/156219863-ff400813-80b7-47a6-ae53-571c2c335d55.png)
+
+The schematic for the Digital Phase Accumulator is as follows:
+
 
 ## Schematics
 
@@ -21,38 +34,50 @@ All the schematics made for this project are shown below. Circuit symbols were c
 ### NAND Gate
 The schematic for the NAND gate is as follows:
 
+![nand_gate_schematic](https://user-images.githubusercontent.com/77510951/156221129-4deed2bb-ee22-4f7f-ad6d-b10af3eeb772.png)
+
 ### D Flip-Flop
 The schematic for the D Flip-Flop is as follows:
 
+![d_flip_flop_schematic](https://user-images.githubusercontent.com/77510951/156221143-1fd582ee-170b-41c5-88ca-bc1e1b331f6b.png)
+
 This was designed using Complementary Pass Logic (CPL). Two latch designs were cascaded to make a 1-bit Flip-Flop.
 
-This was used in realizing a 3-bit register, with the same unit used in parallel 3 times.
+This was used in realizing a 3-bit register, with the same unit used in parallel 3 times. The 3-bit register was used in the Digital Phase Accumulator.
 
 ### Adder
 The schematic for the Adder is as follows:
+
+![full_adder_schematic](https://user-images.githubusercontent.com/77510951/156220644-49034502-76dd-4fea-a50b-d64dcf339da5.png)
 
 The schematic was designed using the self-dual properties, which makes the PMOS structure a mirror image of the NMOS structure.
 
 ### Multiplexer
 The schematic for the Multiplexer is as follows:
 
+![multiplexer_schematic_full_view_with_explanation](https://user-images.githubusercontent.com/77510951/156219991-80a7f945-bf8a-4da5-8881-a04be4991b0a.png)
+
 This was designed using CPL. Complementary bits were gated together to reduce design effort. Strong inverters were used at the output to increase input sensitivity.
 
 ### Tunable Delay Element
 The schematic for the Delay Element is as follows:
+
+![current_starved_tunable_delay_element_schematic_with_explanation](https://user-images.githubusercontent.com/77510951/156219637-c97a423b-456e-4f92-8f69-d83b99c49aff.png)
 
 When tested, the V<sub>ctrl</sub> signal was increasing delay at low values and was giving inadequete results when V<sub>ctrl</sub> went less than 0.4 V. Hence a skewed inverter was used which was biased by a resistive divider (assuming the device would be operated at V<sub>DD</sub> = 1 V).
 
 ### Programmable Frequency Divider
 The schematic for the Programmable Frequency Divider is as follows:
 
+![programmable_frequency_divider_schematic](https://user-images.githubusercontent.com/77510951/156221183-2b2fcc49-efcb-4b7c-b6a1-58e03ff0b544.png)
+
 The design was custom made by merging the logic for a _ _f/4_ _ divider and a _ _f/5_ _ divider with a 50% duty cycle. Relevant inputs were taken out with CPL.
 
 ### Phase Detector & Charge Pump
 The schematic for the Phase Detector & Charge Pump block is as follows:
 
-### Fractional 4-div PLL
-The schematic for the PLL block is as follows:
+![Phase_detector_and_Charge_Pump_schematic](https://user-images.githubusercontent.com/77510951/156221224-e772ba82-a907-4d9f-a463-515845167c55.png)
+
 
 ## Simulation Results
 
