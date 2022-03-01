@@ -12,7 +12,7 @@ A submission for Cloud Based Analog IC Design Hackathon conducted by IIIT-H by R
   * [References](#References)
 
 ## Abstract
-The objective was to create a Fractional Divider based 3-bit Fractional 4-div PLL using 28 nm CMOS technology.
+The objective was to create a Fractional Divider based 3-bit Fractional 4-div PLL using 28 nm CMOS technology. A 4-div 3-bit Fractional PLL implies that the frequency division is going to be of the form: _f_<sub>VCO</sub> = (4+(0.125*m)) _f_<sub>ref</sub> where m is the 3-bit number (0 to 7).
 
 ## Tools Used
  * Synopsys Custom Compiler: The Synopsys Custom Compiler™ design environment is a modern solution for full-custom analog, custom digital, and mixed-signal IC design. As the heart of the Synopsys Custom Design Platform, Custom Compiler provides design entry, simulation management and analysis, and custom layout editing features. This tool was used to design the circuit on a transistor level.
@@ -28,6 +28,10 @@ The schematic for the PLL block is as follows:
 The schematic for the Digital Phase Accumulator is as follows:
 
 ![digital_phase_accumulator_schematic](https://user-images.githubusercontent.com/77510951/156223228-666911d7-1208-4cd7-b9a8-ef3ca4bc6214.png)
+
+The idea behind a Fractional divider based N-div M-bit Fractional Divider PLL is to divide the output of a VCO into fractional delays wrt. one cycle (i.e. 1/2<sup>M</sup>) and select the relevant parts to supply the output. A Delay Locked Loop (DLL) made by the cascading tunable delay elements and the phase frequency detector ensures that the delay caused by the cascade is exactly one cycle of the input. We can use a programmable divider controlled by an accumulator to help reach the DLL into a lock.
+
+The adder feeded in a loop through the register acts as an accumulator counting the steps depending on the fractional bits provided. The carry from the adder controls the frequency divider, which increments the divisor by 1 so that the average of the division occuring across the loop is a fraction. The count in the accumulator controls a multiplexer, which selects the desired output from the delay line.
 
 ## Schematics
 
@@ -52,7 +56,9 @@ The schematic for the Adder is as follows:
 
 ![full_adder_schematic](https://user-images.githubusercontent.com/77510951/156220644-49034502-76dd-4fea-a50b-d64dcf339da5.png)
 
-The schematic was designed using the self-dual properties, which makes the PMOS structure a mirror image of the NMOS structure.
+The schematic was designed using the self-dual properties, which makes the PMOS structure a mirror image of the NMOS structure. 
+
+This was used in realizing a 3-bit adder, with the same unit used in parallel 3 times. The 3-bit adder was used in the Digital Phase Accumulator.
 
 ### Multiplexer
 The schematic for the Multiplexer is as follows:
@@ -61,10 +67,12 @@ The schematic for the Multiplexer is as follows:
 
 This was designed using CPL. Complementary bits were gated together to reduce design effort. Strong inverters were used at the output to increase input sensitivity.
 
-### Tunable Delay Element
+### Current-Starved Tunable Delay Element
 The schematic for the Delay Element is as follows:
 
 ![current_starved_tunable_delay_element_schematic_with_explanation](https://user-images.githubusercontent.com/77510951/156219637-c97a423b-456e-4f92-8f69-d83b99c49aff.png)
+
+The technology file provided was unfit to make a varactor since the tuning range seen during tests was close to 0.0001%. Hence a current starved element was realised instead.
 
 When tested, the V<sub>ctrl</sub> signal was increasing delay at low values and was giving inadequete results when V<sub>ctrl</sub> went less than 0.4 V. Hence a skewed inverter was used which was biased by a resistive divider (assuming the device would be operated at V<sub>DD</sub> = 1 V).
 
@@ -89,25 +97,29 @@ The Phase Detector & Charge Pump block was tested with two square wave signals: 
 
 ![Phase_detector_and_Charge_Pump_transient_results](https://user-images.githubusercontent.com/77510951/156228147-6e1dffff-9eaf-429f-8ddc-906022593e37.png)
 
-The DPA's operation was tested at 200 ps
+The Digital Phase Accumulator's operation was tested at 5 GHz (i.e. period of 200 ps). The waveforms oberserved were logically correct.
 
 ![digital_phase_accumulator_transient_result](https://user-images.githubusercontent.com/77510951/156228201-1f6697df-ff91-4927-b32b-f58c610dc664.png)
 
-The frequency divider's transient results:
+When control is logic 0, the programmable divider divdes by 4; else it divides by 5. The frequency divider's transient results are as follows:
+
 ![frequency_divider_transient_results](https://user-images.githubusercontent.com/77510951/156228255-dad6112c-3e74-4ec5-a8b0-03fcf90e661f.png)
 
-Fractional PLL operating at 5/8:
+The current-starved tunable delay element was tested by cascading two element blocks and given varying control voltages to test the delay at their ends. With an input of 2.5 GHz, the delay element failed to respond at control voltages less than 0.4 V and the delay observed was inversely proportional to the control voltage:
+
+![tunable delay_transient_results](https://user-images.githubusercontent.com/77510951/156228377-0d4ac40c-01d7-4c12-9104-aec72f90e6b0.png)
+
+At control = 0.5 V, delay given by one element was ~35ps
+At control = 0.75 V, delay given by one element was ~5ps
+At control = 1 V, delay given by one element was ~1ps
+
+Fractional PLL operating at a fraction of 5/8:
 ![fractional_div_PLL_transient_results](https://user-images.githubusercontent.com/77510951/156228310-f872cb16-964b-45e5-bc69-74ec166ee699.png)
 
 Fractional PLL at 3/8:
 ![pll_3_by_8_transient_results](https://user-images.githubusercontent.com/77510951/156228412-43f8c46d-f223-4996-a1b1-ebb0e763ba79.png)
 
-
-Tunable dealy's results:
-
-![tunable delay_transient_results](https://user-images.githubusercontent.com/77510951/156228377-0d4ac40c-01d7-4c12-9104-aec72f90e6b0.png)
-
-
+Possible issue: The Digital Phase Accumulator fails to reset in time, giving an incorrect value of the control signal for the programmable frequency divider.
 
 ## Netlist File
 
@@ -517,4 +529,9 @@ c8 output gnd_1 c=1f
   * [Chinmay panda, IIT Hyderabad](https://www.iith.ac.in/events/2022/02/15/Cloud-Based-Analog-IC-Design-Hackathon/)
   
 ## References
+
+[1]	Wanghua Wu, Chih-Wei Yao, Kunal Godbole , Ronghua Ni , Pei-Yuan Chiang , Yongping Han , Yongrong Zuo , Ashutosh Verma , Ivan Siu-chuang Lu , Sang Won Son , Thomas Byunghak Cho, “A 5.5-7.3 GHz Analog Fractional-N Sampling PLL in 28-nm CMOS with 75 fsrms Jitter and -249.7 dB FoM”, 2018 IEEE Radio Frequency Integrated Circuits Symposium
+[2]	Curtis Barrett, Fractional/Integer-N  PLL Basics, Technical Brief SWRA029
+[3]	Basics of Dual Fractional-N Synthesizers/PLLs, Whitepaper by Skyworks 
+
 
