@@ -87,6 +87,28 @@ NOTE: All blocks and testbenches were run at V<sub>DD</sub> = 1 V
 
 The Phase Detector & Charge Pump block was tested with two square wave signals: Input was at 2.4 GHz (i.e. Period of 416 ps) and the reference was at 600 MHz (i.e. Period of 1666 ps). The output is a growing ramp signal, as expected. 
 
+![Phase_detector_and_Charge_Pump_transient_results](https://user-images.githubusercontent.com/77510951/156228147-6e1dffff-9eaf-429f-8ddc-906022593e37.png)
+
+The DPA's operation was tested at 200 ps
+
+![digital_phase_accumulator_transient_result](https://user-images.githubusercontent.com/77510951/156228201-1f6697df-ff91-4927-b32b-f58c610dc664.png)
+
+The frequency divider's transient results:
+![frequency_divider_transient_results](https://user-images.githubusercontent.com/77510951/156228255-dad6112c-3e74-4ec5-a8b0-03fcf90e661f.png)
+
+Fractional PLL operating at 5/8:
+![fractional_div_PLL_transient_results](https://user-images.githubusercontent.com/77510951/156228310-f872cb16-964b-45e5-bc69-74ec166ee699.png)
+
+Fractional PLL at 3/8:
+![pll_3_by_8_transient_results](https://user-images.githubusercontent.com/77510951/156228412-43f8c46d-f223-4996-a1b1-ebb0e763ba79.png)
+
+
+Tunable dealy's results:
+
+![tunable delay_transient_results](https://user-images.githubusercontent.com/77510951/156228377-0d4ac40c-01d7-4c12-9104-aec72f90e6b0.png)
+
+
+
 ## Netlist File
 
 ```
