@@ -1,4 +1,4 @@
-# Fractional-N-div-PLL
+# Fractional Divider based 3-bit Fractional 4-div PLL
 A submission for Cloud Based Analog IC Design Hackathon conducted by IIIT-H by Rohin Bhandari, MS in EE, Columbia University
 
 ## Table of Contents
@@ -12,6 +12,7 @@ A submission for Cloud Based Analog IC Design Hackathon conducted by IIIT-H by R
   * [References](#References)
 
 ## Abstract
+The objective was to create a Fractional Divider based 3-bit Fractional 4-div PLL using 28 nm CMOS technology.
 
 ## Tools Used
  * Synopsys Custom Compiler: The Synopsys Custom Compiler™ design environment is a modern solution for full-custom analog, custom digital, and mixed-signal IC design. As the heart of the Synopsys Custom Design Platform, Custom Compiler provides design entry, simulation management and analysis, and custom layout editing features. This tool was used to design the circuit on a transistor level.
