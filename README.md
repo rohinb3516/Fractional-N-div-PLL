@@ -535,7 +535,10 @@ c8 output gnd_1 c=1f
 ## References
 
 [1]	Wanghua Wu, Chih-Wei Yao, Kunal Godbole , Ronghua Ni , Pei-Yuan Chiang , Yongping Han , Yongrong Zuo , Ashutosh Verma , Ivan Siu-chuang Lu , Sang Won Son , Thomas Byunghak Cho, “A 5.5-7.3 GHz Analog Fractional-N Sampling PLL in 28-nm CMOS with 75 fsrms Jitter and -249.7 dB FoM”, 2018 IEEE Radio Frequency Integrated Circuits Symposium
+
 [2]	Curtis Barrett, Fractional/Integer-N  PLL Basics, Technical Brief SWRA029
+
 [3]	Basics of Dual Fractional-N Synthesizers/PLLs, Whitepaper by Skyworks 
+
 
 
