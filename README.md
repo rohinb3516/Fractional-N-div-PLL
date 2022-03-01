@@ -1,2 +1,448 @@
 # Fractional-N-div-PLL
-A submission for Cloud Based Analog IC Design Hackathon conducted by IIIT-H
+A submission for Cloud Based Analog IC Design Hackathon conducted by IIIT-H by Rohin Bhandari, MS in EE, Columbia University
+
+## Table of Contents
+  * [Abstract](#Abstract)
+  * [Explanation](#Explanation)
+  * [Schematics](#Schematics)
+  * [Simulation Results](#Simulation Results)
+  * [Netlist File](#Netlist File)
+  * [Acknowledgements](#Acknowledgements)
+  * [References](#References)
+
+## Abstract
+
+## Explanation
+
+## Schematics
+
+All the schematics made for this project are shown below. Circuit symbols were custom designed to ease recognizibility.
+
+### NAND Gate
+### D Flip-Flop
+The schematic for the D Flip-Flop is as follows:
+
+This was used in realizing a 3-bit register, with the same unit used in parallel 3 times
+### Adder
+### Multiplexer
+### Tunable Delay Element
+### Programmable Frequency Divider
+### Phase Detector & Charge Pump
+
+
+
+## Simulation Results
+
+NOTE: All blocks and testbenches were run at V<sub>DD</sub> = 1 V
+
+The Phase Detector & Charge Pump block was tested with two square wave signals: Input was at 2.4 GHz (i.e. Period of 416 ps) and the reference was at 600 MHz (i.e. Period of 1666 ps). The output is a growing ramp signal, as expected. 
+
+## Netlist File
+
+```
+*  Generated for: PrimeSim
+*  Design library name: project1
+*  Design cell name: Fractional_N_PLL_test
+*  Design view name: schematic
+.lib 'saed32nm.lib' TT
+.lib 'saed32nm.lib' TT
+.param m0=1 m1=0 m2=1
+*Custom Compiler Version S-2021.09
+*Tue Mar  1 15:24:54 2022
+
+.global gnd!
+********************************************************************************
+* Library          : project1
+* Cell             : inverter_2u_1u
+* View             : schematic
+* View Search List : hspice hspiceD schematic spice veriloga
+* View Stop List   : hspice hspiceD
+********************************************************************************
+.subckt inverter_2u_1u gnd_1 in out vdd
+xm0 out in gnd_1 gnd_1 n105 w=1u l=30n nf=1 m=1
+xm1 out in vdd vdd p105 w=2u l=30n nf=1 m=1
+.ends inverter_2u_1u
+
+********************************************************************************
+* Library          : project1
+* Cell             : mux_3_selects
+* View             : schematic
+* View Search List : hspice hspiceD schematic spice veriloga
+* View Stop List   : hspice hspiceD
+********************************************************************************
+.subckt mux_3_selects gnd_1 in0 in1 in2 in3 in4 in5 in6 in7 out s0 s1 s2 vdd
+xm52 s2_ s2 vdd vdd p105 w=0.1u l=0.03u nf=1 m=1
+xm50 s1_ s1 vdd vdd p105 w=0.1u l=0.03u nf=1 m=1
+xm49 s0_ s0 vdd vdd p105 w=0.1u l=0.03u nf=1 m=1
+xm35 net56 s2 net35 vdd p105 w=2u l=30n nf=1 m=1
+xm34 net39 s0_ in3 vdd p105 w=2u l=30n nf=1 m=1
+xm33 net35 s1_ net39 vdd p105 w=2u l=30n nf=1 m=1
+xm32 net56 s2_ net34 vdd p105 w=2u l=30n nf=1 m=1
+xm31 net38 s0 in4 vdd p105 w=2u l=30n nf=1 m=1
+xm30 net34 s1 net38 vdd p105 w=2u l=30n nf=1 m=1
+xm29 net56 s2 net33 vdd p105 w=2u l=30n nf=1 m=1
+xm28 net37 s0 in2 vdd p105 w=2u l=30n nf=1 m=1
+xm27 net33 s1_ net37 vdd p105 w=2u l=30n nf=1 m=1
+xm26 net56 s2_ net32 vdd p105 w=2u l=30n nf=1 m=1
+xm25 net36 s0_ in5 vdd p105 w=2u l=30n nf=1 m=1
+xm24 net32 s1 net36 vdd p105 w=2u l=30n nf=1 m=1
+xm17 net56 s2 net25 vdd p105 w=2u l=30n nf=1 m=1
+xm16 net27 s0_ in1 vdd p105 w=2u l=30n nf=1 m=1
+xm15 net25 s1 net27 vdd p105 w=2u l=30n nf=1 m=1
+xm14 net56 s2_ net24 vdd p105 w=2u l=30n nf=1 m=1
+xm13 net26 s0 in6 vdd p105 w=2u l=30n nf=1 m=1
+xm12 net24 s1_ net26 vdd p105 w=2u l=30n nf=1 m=1
+xm8 net56 s2 net14 vdd p105 w=2u l=30n nf=1 m=1
+xm7 net15 s0 in0 vdd p105 w=2u l=30n nf=1 m=1
+xm6 net14 s1 net15 vdd p105 w=2u l=30n nf=1 m=1
+xm4 net56 s2_ net12 vdd p105 w=2u l=30n nf=1 m=1
+xm2 net12 s1_ net10 vdd p105 w=2u l=30n nf=1 m=1
+xm0 net10 s0_ in7 vdd p105 w=2u l=30n nf=1 m=1
+xm53 s2_ s2 gnd_1 gnd_1 n105 w=1u l=30n nf=1 m=1
+xm51 s1_ s1 gnd_1 gnd_1 n105 w=1u l=30n nf=1 m=1
+xm48 s0_ s0 gnd_1 gnd_1 n105 w=1u l=30n nf=1 m=1
+xm47 net35 s2_ net56 gnd_1 n105 w=1u l=30n nf=1 m=1
+xm46 in3 s0 net39 gnd_1 n105 w=1u l=30n nf=1 m=1
+xm45 net39 s1 net35 gnd_1 n105 w=1u l=30n nf=1 m=1
+xm44 net34 s2 net56 gnd_1 n105 w=1u l=30n nf=1 m=1
+xm43 in4 s0_ net38 gnd_1 n105 w=1u l=30n nf=1 m=1
+xm42 net38 s1_ net34 gnd_1 n105 w=1u l=30n nf=1 m=1
+xm41 net33 s2_ net56 gnd_1 n105 w=1u l=30n nf=1 m=1
+xm40 in2 s0_ net37 gnd_1 n105 w=1u l=30n nf=1 m=1
+xm39 net37 s1 net33 gnd_1 n105 w=1u l=30n nf=1 m=1
+xm38 net32 s2 net56 gnd_1 n105 w=1u l=30n nf=1 m=1
+xm37 in5 s0 net36 gnd_1 n105 w=1u l=30n nf=1 m=1
+xm36 net36 s1_ net32 gnd_1 n105 w=1u l=30n nf=1 m=1
+xm23 net25 s2_ net56 gnd_1 n105 w=1u l=30n nf=1 m=1
+xm22 in1 s0 net27 gnd_1 n105 w=1u l=30n nf=1 m=1
+xm21 net27 s1_ net25 gnd_1 n105 w=1u l=30n nf=1 m=1
+xm20 net24 s2 net56 gnd_1 n105 w=1u l=30n nf=1 m=1
+xm19 in6 s0_ net26 gnd_1 n105 w=1u l=30n nf=1 m=1
+xm18 net26 s1 net24 gnd_1 n105 w=1u l=30n nf=1 m=1
+xm11 net14 s2_ net56 gnd_1 n105 w=1u l=30n nf=1 m=1
+xm10 in0 s0_ net15 gnd_1 n105 w=1u l=30n nf=1 m=1
+xm9 net15 s1_ net14 gnd_1 n105 w=1u l=30n nf=1 m=1
+xm5 net12 s2 net56 gnd_1 n105 w=1u l=30n nf=1 m=1
+xm3 net10 s1 net12 gnd_1 n105 w=1u l=30n nf=1 m=1
+xm1 in7 s0 net10 gnd_1 n105 w=1u l=30n nf=1 m=1
+xi55 gnd_1 net66 out vdd inverter_2u_1u
+xi54 gnd_1 net56 net66 vdd inverter_2u_1u
+.ends mux_3_selects
+
+********************************************************************************
+* Library          : project1
+* Cell             : adder_1bit
+* View             : schematic
+* View Search List : hspice hspiceD schematic spice veriloga
+* View Stop List   : hspice hspiceD
+********************************************************************************
+.subckt adder_1bit a b cin cout s gnd_1 vdd
+xm26 cout cout_ vdd vdd p105 w=2u l=30n nf=1 m=1
+xm24 s s_ vdd vdd p105 w=1u l=30n nf=1 m=1
+xm11 net26 cin vdd vdd p105 w=3u l=30n nf=1 m=1
+xm10 net24 a vdd vdd p105 w=2u l=30n nf=1 m=1
+xm9 s_ a net15 vdd p105 w=3u l=30n nf=1 m=1
+xm8 net15 b net26 vdd p105 w=3u l=30n nf=1 m=1
+xm7 s_ cout_ net24 vdd p105 w=2u l=30n nf=1 m=1
+xm6 net24 cin vdd vdd p105 w=2u l=30n nf=1 m=1
+xm5 net24 b vdd vdd p105 w=2u l=30n nf=1 m=1
+xm4 cout_ b net11 vdd p105 w=2u l=30n nf=1 m=1
+xm3 net11 a vdd vdd p105 w=2u l=30n nf=1 m=1
+xm2 cout_ cin net6 vdd p105 w=2u l=30n nf=1 m=1
+xm1 net6 b vdd vdd p105 w=2u l=30n nf=1 m=1
+xm0 net6 a vdd vdd p105 w=2u l=30n nf=1 m=1
+xm27 cout cout_ gnd_1 gnd_1 n105 w=0.5u l=30n nf=1 m=1
+xm25 s s_ gnd_1 gnd_1 n105 w=0.5u l=30n nf=1 m=1
+xm23 net51 cin gnd_1 gnd_1 n105 w=1.5u l=30n nf=1 m=1
+xm22 net49 a gnd_1 gnd_1 n105 w=1u l=30n nf=1 m=1
+xm21 s_ cout_ net49 gnd_1 n105 w=1u l=30n nf=1 m=1
+xm20 net49 b gnd_1 gnd_1 n105 w=1u l=30n nf=1 m=1
+xm19 net49 cin gnd_1 gnd_1 n105 w=1u l=30n nf=1 m=1
+xm18 net41 b net51 gnd_1 n105 w=1.5u l=30n nf=1 m=1
+xm17 s_ a net41 gnd_1 n105 w=1.5u l=30n nf=1 m=1
+xm16 cout_ cin net35 gnd_1 n105 w=1u l=30n nf=1 m=1
+xm15 net35 a gnd_1 gnd_1 n105 w=1u l=30n nf=1 m=1
+xm14 net35 b gnd_1 gnd_1 n105 w=1u l=30n nf=1 m=1
+xm13 net31 a gnd_1 gnd_1 n105 w=1u l=30n nf=1 m=1
+xm12 cout_ b net31 gnd_1 n105 w=1u l=30n nf=1 m=1
+.ends adder_1bit
+
+********************************************************************************
+* Library          : project1
+* Cell             : adder_3bit
+* View             : schematic
+* View Search List : hspice hspiceD schematic spice veriloga
+* View Stop List   : hspice hspiceD
+********************************************************************************
+.subckt adder_3bit a0 a1 a2 b0 b1 b2 cout gnd_1 s0 s1 s2 sub vdd
+xi2 a2 b2 net21 cout s2 gnd_1 vdd adder_1bit
+xi1 a1 b1 net14 net21 s1 gnd_1 vdd adder_1bit
+xi0 a0 b0 sub net14 s0 gnd_1 vdd adder_1bit
+.ends adder_3bit
+
+********************************************************************************
+* Library          : project1
+* Cell             : d_flipflop
+* View             : schematic
+* View Search List : hspice hspiceD schematic spice veriloga
+* View Stop List   : hspice hspiceD
+********************************************************************************
+.subckt d_flipflop clk d q rst gnd_1 vdd
+xm36 net66 rst_ net70 net67 n105 w=1u l=30n nf=1 m=1
+xm35 rst rst net70 net67 n105 w=1u l=30n nf=1 m=1
+xm31 rst_ rst gnd_1 gnd_1 n105 w=1u l=30n nf=1 m=1
+xm30 rst rst net62 net63 n105 w=1u l=30n nf=1 m=1
+xm29 net69 rst_ net62 net63 n105 w=1u l=30n nf=1 m=1
+xm23 net56 net66 gnd_1 gnd_1 n105 w=1u l=30n nf=1 m=1
+xm22 net56 clk net69 gnd_1 n105 w=1u l=30n nf=1 m=1
+xm21 net54 q gnd_1 gnd_1 n105 w=1u l=30n nf=1 m=1
+xm20 net54 clk_ net69 gnd_1 n105 w=1u l=30n nf=1 m=1
+xm17 clk_ clk gnd_1 gnd_1 n105 w=1u l=30n nf=1 m=1
+xm12 net47 clk net50 gnd_1 n105 w=1u l=30n nf=1 m=1
+xm11 net47 net70 gnd_1 gnd_1 n105 w=1u l=30n nf=1 m=1
+xm5 net45 clk_ net50 gnd_1 n105 w=1u l=30n nf=1 m=1
+xm15 net66 net50 gnd_1 gnd_1 n105 w=1u l=30n nf=1 m=1
+xm1 net45 d gnd_1 gnd_1 n105 w=1u l=30n nf=1 m=1
+xm19 q net62 gnd_1 gnd_1 n105 w=1u l=30n nf=1 m=1
+xm32 rst_ rst vdd vdd p105 w=2u l=30n nf=1 m=1
+xm28 net56 net66 vdd vdd p105 w=2u l=30n nf=1 m=1
+xm27 net69 clk_ net56 vdd p105 w=2u l=30n nf=1 m=1
+xm26 net54 q vdd vdd p105 w=2u l=30n nf=1 m=1
+xm25 net69 clk net54 vdd p105 w=2u l=30n nf=1 m=1
+xm24 q net62 vdd vdd p105 w=2u l=30n nf=1 m=1
+xm18 clk_ clk vdd vdd p105 w=2u l=30n nf=1 m=1
+xm10 net50 clk net45 vdd p105 w=2u l=30n nf=1 m=1
+xm13 net47 net70 vdd vdd p105 w=2u l=30n nf=1 m=1
+xm6 net45 d vdd vdd p105 w=2u l=30n nf=1 m=1
+xm16 net66 net50 vdd vdd p105 w=2u l=30n nf=1 m=1
+xm14 net50 clk_ net47 vdd p105 w=2u l=30n nf=1 m=1
+.ends d_flipflop
+
+********************************************************************************
+* Library          : project1
+* Cell             : register_3bit
+* View             : schematic
+* View Search List : hspice hspiceD schematic spice veriloga
+* View Stop List   : hspice hspiceD
+********************************************************************************
+.subckt register_3bit b0 b1 b2 clk gnd_1 out0 out1 out2 rst vdd
+xi2 clk b2 out2 rst gnd_1 vdd d_flipflop
+xi1 clk b1 out1 rst gnd_1 vdd d_flipflop
+xi0 clk b0 out0 rst gnd_1 vdd d_flipflop
+.ends register_3bit
+
+********************************************************************************
+* Library          : project1
+* Cell             : digital_phase_accumulator
+* View             : schematic
+* View Search List : hspice hspiceD schematic spice veriloga
+* View Stop List   : hspice hspiceD
+********************************************************************************
+.subckt digital_phase_accumulator b0 b1 b2 carry gnd_1 ref sel0 sel1 sel2 vdd
+xi0 b0 b1 b2 sel0 sel1 sel2 carry gnd_1 net20 net21 net22 gnd_1 vdd adder_3bit
+xi1 net20 net21 net22 ref gnd_1 sel0 sel1 sel2 gnd_1 vdd register_3bit
+.ends digital_phase_accumulator
+
+********************************************************************************
+* Library          : project1
+* Cell             : d_flipflop_with_bar
+* View             : schematic
+* View Search List : hspice hspiceD schematic spice veriloga
+* View Stop List   : hspice hspiceD
+********************************************************************************
+.subckt d_flipflop_with_bar clk d q q_ rst gnd_1 vdd
+xm36 net66 rst_ net70 net67 n105 w=1u l=30n nf=1 m=1
+xm35 rst rst net70 net67 n105 w=1u l=30n nf=1 m=1
+xm31 rst_ rst gnd_1 gnd_1 n105 w=1u l=30n nf=1 m=1
+xm30 rst rst q_ net63 n105 w=1u l=30n nf=1 m=1
+xm29 net69 rst_ q_ net63 n105 w=1u l=30n nf=1 m=1
+xm23 net56 net66 gnd_1 gnd_1 n105 w=1u l=30n nf=1 m=1
+xm22 net56 clk net69 gnd_1 n105 w=1u l=30n nf=1 m=1
+xm21 net54 q gnd_1 gnd_1 n105 w=1u l=30n nf=1 m=1
+xm20 net54 clk_ net69 gnd_1 n105 w=1u l=30n nf=1 m=1
+xm17 clk_ clk gnd_1 gnd_1 n105 w=1u l=30n nf=1 m=1
+xm12 net47 clk net50 gnd_1 n105 w=1u l=30n nf=1 m=1
+xm11 net47 net70 gnd_1 gnd_1 n105 w=1u l=30n nf=1 m=1
+xm5 net45 clk_ net50 gnd_1 n105 w=1u l=30n nf=1 m=1
+xm15 net66 net50 gnd_1 gnd_1 n105 w=1u l=30n nf=1 m=1
+xm1 net45 d gnd_1 gnd_1 n105 w=1u l=30n nf=1 m=1
+xm19 q q_ gnd_1 gnd_1 n105 w=1u l=30n nf=1 m=1
+xm32 rst_ rst vdd vdd p105 w=2u l=30n nf=1 m=1
+xm28 net56 net66 vdd vdd p105 w=2u l=30n nf=1 m=1
+xm27 net69 clk_ net56 vdd p105 w=2u l=30n nf=1 m=1
+xm26 net54 q vdd vdd p105 w=2u l=30n nf=1 m=1
+xm25 net69 clk net54 vdd p105 w=2u l=30n nf=1 m=1
+xm24 q q_ vdd vdd p105 w=2u l=30n nf=1 m=1
+xm18 clk_ clk vdd vdd p105 w=2u l=30n nf=1 m=1
+xm10 net50 clk net45 vdd p105 w=2u l=30n nf=1 m=1
+xm13 net47 net70 vdd vdd p105 w=2u l=30n nf=1 m=1
+xm6 net45 d vdd vdd p105 w=2u l=30n nf=1 m=1
+xm16 net66 net50 vdd vdd p105 w=2u l=30n nf=1 m=1
+xm14 net50 clk_ net47 vdd p105 w=2u l=30n nf=1 m=1
+.ends d_flipflop_with_bar
+
+********************************************************************************
+* Library          : project1
+* Cell             : nand
+* View             : schematic
+* View Search List : hspice hspiceD schematic spice veriloga
+* View Stop List   : hspice hspiceD
+********************************************************************************
+.subckt nand a b gnd_1 out vdd
+xm1 net5 b gnd_1 gnd_1 n105 w=2u l=30n nf=1 m=1
+xm0 out a net5 gnd_1 n105 w=2u l=30n nf=1 m=1
+xm3 out b vdd vdd p105 w=2u l=30n nf=1 m=1
+xm2 out a vdd vdd p105 w=2u l=30n nf=1 m=1
+.ends nand
+
+********************************************************************************
+* Library          : project1
+* Cell             : f_divider_4_5_50percentcycles
+* View             : schematic
+* View Search List : hspice hspiceD schematic spice veriloga
+* View Stop List   : hspice hspiceD
+********************************************************************************
+.subckt f_divider_4_5_50percentcycles control fin fout gnd_1 rst vdd
+xi8 net61 net50 net56 rst gnd_1 vdd d_flipflop
+xi2 fin net25 net50 rst gnd_1 vdd d_flipflop
+xi0 fin net20 net12 rst gnd_1 vdd d_flipflop
+xi1 fin net12 net74 net28 rst gnd_1 vdd d_flipflop_with_bar
+xi9 net50 net56 gnd_1 net60 vdd nand
+xi4 net28 control gnd_1 net25 vdd nand
+xi3 net74 net81 gnd_1 net20 vdd nand
+xi14 gnd_1 control control_ vdd inverter_2u_1u
+xi11 gnd_1 fin net61 vdd inverter_2u_1u
+xi10 gnd_1 net60 net81 vdd inverter_2u_1u
+xm15 net81 control fout gnd_1 n105 w=1u l=30n nf=1 m=1
+xm12 net74 control_ fout gnd_1 n105 w=1u l=30n nf=1 m=1
+xm16 fout control_ net81 vdd p105 w=2u l=30n nf=1 m=1
+xm13 fout control net74 vdd p105 w=2u l=30n nf=1 m=1
+.ends f_divider_4_5_50percentcycles
+
+********************************************************************************
+* Library          : project1
+* Cell             : Phase_Detector_and_Pump
+* View             : schematic
+* View Search List : hspice hspiceD schematic spice veriloga
+* View Stop List   : hspice hspiceD
+********************************************************************************
+.subckt phase_detector_and_pump gnd_1 osc_by_n out ref vdd
+xi1 osc_by_n gnd_1 net14 net44 gnd_1 vdd d_flipflop
+xi0 ref vdd net13 net44 gnd_1 vdd d_flipflop
+xi2 net13 net14 gnd_1 net40 vdd nand
+xm4 net22 net22 gnd_1 gnd_1 n105 w=2u l=30n nf=1 m=1
+xm3 out net14 net22 gnd_1 n105 w=2u l=30n nf=1 m=1
+xm6 net32 net32 vdd vdd p105 w=4u l=30n nf=2 m=1
+xm5 out net13 net32 vdd p105 w=4u l=30n nf=2 m=1
+xi7 gnd_1 net40 net44 vdd inverter_2u_1u
+.ends phase_detector_and_pump
+
+********************************************************************************
+* Library          : project1
+* Cell             : tunable_delay_current_starved
+* View             : schematic
+* View Search List : hspice hspiceD schematic spice veriloga
+* View Stop List   : hspice hspiceD
+********************************************************************************
+.subckt tunable_delay_current_starved gnd_1 in out vctrl vdd
+xm42 net141 vctrl net148 gnd_1 n105 w=1u l=0.03u nf=1 m=1
+xm16 out net73 gnd_1 gnd_1 n105 w=1u l=30n nf=1 m=1
+xm15 net73 in net52 gnd_1 n105 w=1u l=30n nf=1 m=1
+xm14 net52 net141 gnd_1 gnd_1 n105 w=1u l=30n nf=1 m=1
+xm13 net75 net141 gnd_1 gnd_1 n105 w=1u l=30n nf=1 m=1
+xm43 net141 vctrl vdd vdd p105 w=0.1u l=0.03u nf=1 m=1
+xm20 out net73 vdd vdd p105 w=2u l=30n nf=1 m=1
+xm19 net73 in net66 vdd p105 w=2u l=30n nf=1 m=1
+xm18 net66 net75 vdd vdd p105 w=2u l=30n nf=1 m=1
+xm17 net75 net75 vdd vdd p105 w=2u l=30n nf=1 m=1
+r47 net148 gnd_1 r=0.4k
+r46 vdd net148 r=0.6k
+.ends tunable_delay_current_starved
+
+********************************************************************************
+* Library          : project1
+* Cell             : Fractional_N_PLL
+* View             : schematic
+* View Search List : hspice hspiceD schematic spice veriloga
+* View Stop List   : hspice hspiceD
+********************************************************************************
+.subckt fractional_n_pll gnd_1 in m0 m1 m2 out ref vdd
+xi0 gnd_1 in0 in1 in2 in3 in4 in5 in6 in7 out sel0 sel1 sel2 vdd mux_3_selects
+xi1 m0 m1 m2 control_4_or_5 gnd_1 ref sel0 sel1 sel2 vdd
++ digital_phase_accumulator
+xi13 control_4_or_5 in in0 gnd_1 gnd_1 vdd f_divider_4_5_50percentcycles
+xi11 in in0 delayed_in gnd_1 gnd_1 vdd d_flipflop
+xi12 gnd_1 delayed_in dll_loop in7 vdd phase_detector_and_pump
+xi8 gnd_1 in6 in7 dll_loop vdd tunable_delay_current_starved
+xi7 gnd_1 in5 in6 dll_loop vdd tunable_delay_current_starved
+xi6 gnd_1 in4 in5 dll_loop vdd tunable_delay_current_starved
+xi5 gnd_1 in3 in4 dll_loop vdd tunable_delay_current_starved
+xi4 gnd_1 in2 in3 dll_loop vdd tunable_delay_current_starved
+xi3 gnd_1 in1 in2 dll_loop vdd tunable_delay_current_starved
+xi2 gnd_1 in0 in1 dll_loop vdd tunable_delay_current_starved
+.ends fractional_n_pll
+
+********************************************************************************
+* Library          : project1
+* Cell             : Fractional_N_PLL_test
+* View             : schematic
+* View Search List : hspice hspiceD schematic spice veriloga
+* View Stop List   : hspice hspiceD
+********************************************************************************
+xi0 gnd_1 input m0 m1 m2 output reference vdd fractional_n_pll
+v5 gnd_1 gnd! dc=0
+v4 vdd gnd_1 dc=1
+v3 m0 gnd_1 dc='m0'
+v2 m2 gnd_1 dc='m2'
+v1 m1 gnd_1 dc='m1'
+v7 reference gnd_1 dc=0 pulse ( 0 1 0 2p 2p 204p 416p )
+v6 input gnd_1 dc=0 pulse ( 0 1 0 2p 2p 246p 500p )
+c8 output gnd_1 c=1f
+
+
+
+
+
+
+
+
+.tran '10p' '20n' name=tran
+
+.option primesim_remove_probe_prefix = 0
+.probe v(*) i(*) level=1
+.probe tran v(xi0.control_4_or_5) v(xi0.dll_loop) v(input) v(output)
++ v(reference)
+
+.temp 25
+
+
+
+.option primesim_output=wdf
+
+
+.option parhier = LOCAL
+
+
+
+
+
+
+.end
+
+
+```
+
+## Author
+
+* Rohin Bhandari, MS in EE, Columbia University in the City of New York, NYC, USA
+
+## Acknowledgements
+
+  * [Kunal Ghosh, Co-founder, VSD Corp. Pvt. Ltd.](https://www.iith.ac.in/events/2022/02/15/Cloud-Based-Analog-IC-Design-Hackathon/)
+  * [Cloud Based Analog IC Design Hackathon](https://www.iith.ac.in/events/2022/02/15/Cloud-Based-Analog-IC-Design-Hackathon/')
+  * [Synopsys India](https://www.synopsys.com/)
+  * [Sameer Durgoji, NIT Karnataka](https://www.iith.ac.in/events/2022/02/15/Cloud-Based-Analog-IC-Design-Hackathon/)
+  * [Chinmay panda, IIT Hyderabad](https://www.iith.ac.in/events/2022/02/15/Cloud-Based-Analog-IC-Design-Hackathon/)
+  
+## References
+
