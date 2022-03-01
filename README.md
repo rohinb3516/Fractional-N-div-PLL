@@ -64,7 +64,9 @@ This was used in realizing a 3-bit adder, with the same unit used in parallel 3 
 ### Multiplexer
 The schematic for the Multiplexer is as follows:
 
-<p align="center">![multiplexer_schematic_full_view_with_explanation](https://user-images.githubusercontent.com/77510951/156219991-80a7f945-bf8a-4da5-8881-a04be4991b0a.png)</p>
+<p align="center"><img src="https://user-images.githubusercontent.com/77510951/156219991-80a7f945-bf8a-4da5-8881-a04be4991b0a.png"></p>
+
+![multiplexer_schematic_zoomed_view](https://user-images.githubusercontent.com/77510951/156237316-a24d9521-ee3d-4333-ab5f-e731cc1586bf.png)
 
 This was designed using CPL. Complementary bits were gated together to reduce design effort. Strong inverters were used at the output to increase input sensitivity.
 
