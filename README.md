@@ -27,7 +27,7 @@ The schematic for the PLL block is as follows:
 
 The schematic for the Digital Phase Accumulator is as follows:
 
-![digital_phase_accumulator_schematic](https://user-images.githubusercontent.com/77510951/156223228-666911d7-1208-4cd7-b9a8-ef3ca4bc6214.png =320x480)
+![digital_phase_accumulator_schematic](https://user-images.githubusercontent.com/77510951/156223228-666911d7-1208-4cd7-b9a8-ef3ca4bc6214.png | width=100)
 
 The idea behind a Fractional divider based N-div M-bit Fractional Divider PLL is to divide the output of a VCO into fractional delays wrt. one cycle (i.e. 1/2<sup>M</sup>) and select the relevant parts to supply the output. A Delay Locked Loop (DLL) made by the cascading tunable delay elements and the phase frequency detector ensures that the delay caused by the cascade is exactly one cycle of the input. We can use a programmable divider controlled by an accumulator to help reach the DLL into a lock.
 
