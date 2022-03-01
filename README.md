@@ -5,8 +5,8 @@ A submission for Cloud Based Analog IC Design Hackathon conducted by IIIT-H by R
   * [Abstract](#Abstract)
   * [Explanation](#Explanation)
   * [Schematics](#Schematics)
-  * [Simulation Results](#Simulation Results)
-  * [Netlist File](#Netlist File)
+  * [Simulation Results](#Simulation-Results)
+  * [Netlist File](#Netlist-File)
   * [Acknowledgements](#Acknowledgements)
   * [References](#References)
 
@@ -16,20 +16,43 @@ A submission for Cloud Based Analog IC Design Hackathon conducted by IIIT-H by R
 
 ## Schematics
 
-All the schematics made for this project are shown below. Circuit symbols were custom designed to ease recognizibility.
+All the schematics made for this project are shown below. Circuit symbols were custom designed to ease recognizibility. Feel free to browse the directory to view the screenshots of the schematics without the explanation.
 
 ### NAND Gate
+The schematic for the NAND gate is as follows:
+
 ### D Flip-Flop
 The schematic for the D Flip-Flop is as follows:
 
-This was used in realizing a 3-bit register, with the same unit used in parallel 3 times
+This was designed using Complementary Pass Logic (CPL). Two latch designs were cascaded to make a 1-bit Flip-Flop.
+
+This was used in realizing a 3-bit register, with the same unit used in parallel 3 times.
+
 ### Adder
+The schematic for the Adder is as follows:
+
+The schematic was designed using the self-dual properties, which makes the PMOS structure a mirror image of the NMOS structure.
+
 ### Multiplexer
+The schematic for the Multiplexer is as follows:
+
+This was designed using CPL. Complementary bits were gated together to reduce design effort. Strong inverters were used at the output to increase input sensitivity.
+
 ### Tunable Delay Element
+The schematic for the Delay Element is as follows:
+
+When tested, the V<sub>ctrl</sub> signal was increasing delay at low values and was giving inadequete results when V<sub>ctrl</sub> went less than 0.4 V. Hence a skewed inverter was used which was biased by a resistive divider (assuming the device would be operated at V<sub>DD</sub> = 1 V).
+
 ### Programmable Frequency Divider
+The schematic for the Programmable Frequency Divider is as follows:
+
+The design was custom made by merging the logic for a _ _f/4_ _ divider and a _ _f/5_ _ divider with a 50% duty cycle. Relevant inputs were taken out with CPL.
+
 ### Phase Detector & Charge Pump
+The schematic for the Phase Detector & Charge Pump block is as follows:
 
-
+### Fractional 4-div PLL
+The schematic for the PLL block is as follows:
 
 ## Simulation Results
 
