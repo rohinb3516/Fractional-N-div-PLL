@@ -12,7 +12,7 @@ A submission for Cloud Based Analog IC Design Hackathon conducted by IIIT-H by R
   * [References](#References)
 
 ## Abstract
-The objective was to create a Fractional Divider based 3-bit Fractional 4-div PLL using 28 nm CMOS technology. A 4-div 3-bit Fractional PLL implies that the frequency division is going to be of the form: _f_<sub>VCO</sub> = (4+(0.125*m)) _f_<sub>ref</sub> where m is the 3-bit number (0 to 7).
+The objective was to create a Fractional Divider based 3-bit Fractional 4-div PLL using 28 nm CMOS technology. A 4-div 3-bit Fractional PLL implies that the frequency division is going to be of the form: _f_<sub>VCO</sub> = (4 + (0.125 x m)) _f_<sub>ref</sub> where m is the 3-bit number (0 to 7).
 
 ## Tools Used
  * Synopsys Custom Compiler: The Synopsys Custom Compiler™ design environment is a modern solution for full-custom analog, custom digital, and mixed-signal IC design. As the heart of the Synopsys Custom Design Platform, Custom Compiler provides design entry, simulation management and analysis, and custom layout editing features. This tool was used to design the circuit on a transistor level.
@@ -27,7 +27,7 @@ The schematic for the PLL block is as follows:
 
 The schematic for the Digital Phase Accumulator is as follows:
 
-![digital_phase_accumulator_schematic](https://user-images.githubusercontent.com/77510951/156223228-666911d7-1208-4cd7-b9a8-ef3ca4bc6214.png)
+![digital_phase_accumulator_schematic](https://user-images.githubusercontent.com/77510951/156223228-666911d7-1208-4cd7-b9a8-ef3ca4bc6214.png =320x480)
 
 The idea behind a Fractional divider based N-div M-bit Fractional Divider PLL is to divide the output of a VCO into fractional delays wrt. one cycle (i.e. 1/2<sup>M</sup>) and select the relevant parts to supply the output. A Delay Locked Loop (DLL) made by the cascading tunable delay elements and the phase frequency detector ensures that the delay caused by the cascade is exactly one cycle of the input. We can use a programmable divider controlled by an accumulator to help reach the DLL into a lock.
 
