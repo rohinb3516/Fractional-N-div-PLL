@@ -118,11 +118,8 @@ At control = 0.75 V, delay given by one element was ~5ps
 
 At control = 1 V, delay given by one element was ~1ps
 
-Fractional PLL operating at a fraction of 5/8:
 
-![fractional_div_PLL_transient_results](https://user-images.githubusercontent.com/77510951/156228310-f872cb16-964b-45e5-bc69-74ec166ee699.png)
-
-Fractional PLL at 3/8:
+Fractional PLL at 3/8 (i.e. bit input = 101<sub>2</sub>):
 
 ![pll_3_by_8_transient_results](https://user-images.githubusercontent.com/77510951/156228412-43f8c46d-f223-4996-a1b1-ebb0e763ba79.png)
 
